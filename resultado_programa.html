@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-indigo-950">
+    <section>
+      <div class="flex flex-col items-center mt-40 px-6 mx-auto lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
+          <div class="space-y-4 md:space-y-6 sm:p-8">    
+            <a href="/" class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 bg-yellow-200">
+              <img class="w-10 h-10 mr-2 rounded-full" src="/Logo_Somare.png" alt="logo"/>
+              Programa
+            </a>
+            <div class="">
+                <div class="w-full h-8 bg-yellow-200">
+                    <span class="block mb-2 font-medium text-lg text-gray-900 text-center">${nome_programa}</span>
+                </div>
+                <div class="w-full h-8 bg-yellow-200">
+                  <span class="block mb-2 font-medium text-lg text-gray-900 text-center">${qtd_sessoes}</span>
+              </div>
+            </div>
+
+            <div class="">
+              <div class="w-full h-8 bg-yellow-200">
+                  <span class="block mb-2 font-medium text-lg text-gray-900">Paciente: ${nome_paciente}</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900">Idade: ${idade_paciente}</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900">Especialidade: ${especialidade_paciente}</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900">Profissional: ${profissional_nome}</span>
+              </div>
+            </div>
+
+            <div class="">
+              <div class="w-full h-8 bg-yellow-200">
+                  <span class="block mb-2 font-medium text-lg text-gray-900 text-center">Resposta:</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900 text-center">1º - ${resposta1}</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900 text-center">2º - ${resposta2}</span>
+              </div>
+              <div class="w-full h-8 bg-yellow-200">
+                <span class="block mb-2 font-medium text-lg text-gray-900 text-center">3º - ${resposta3}</span>
+              </div>
+            </div>
+
+            <div class="">
+              <div class="w-full h-8 bg-yellow-200">
+                  <span class="block mb-2 font-medium text-lg text-gray-900 text-center">${data_registro}</span>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">Salvar</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>

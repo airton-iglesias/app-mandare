@@ -1,0 +1,134 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-indigo-950">
+    <section>
+      <div class="flex flex-col items-center mt-40 px-6 mx-auto lg:py-0">
+        <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md xl:p-0 ">
+          <div class="space-y-4 md:space-y-6 sm:p-8">    
+            <a href="/" class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900 bg-yellow-200">
+              <img class="w-10 h-10 mr-2 rounded-full" src="/Logo_Somare.png" alt="logo"/>
+              Histórico do Paciente
+            </a>
+            <div class="">
+                <div class="w-full h-8 bg-yellow-200">
+                    <span class="block mb-2 font-medium text-lg text-gray-900 text-center">${nome_paciente}</span>
+                </div>
+                <div class="w-full h-8 bg-yellow-200">
+                  <span class="block mb-2 font-medium text-lg text-gray-900 text-center">${nome_programa}</span>
+              </div>
+            </div>
+
+            <div class="bg-yellow-200 p-3">
+              <div class="py-2">
+                <div class="flex items-center justify-between">
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">1º Sessão</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${valor}</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${data_sessao}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-2">
+                <div class="flex items-center justify-between">
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">2º Sessão</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${valor}</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${data_sessao}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-2">
+                <div class="flex items-center justify-between">
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">3º Sessão</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${valor}</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${data_sessao}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-2">
+                <div class="flex items-center justify-between">
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">4º Sessão</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${valor}</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${data_sessao}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="py-2">
+                <div class="flex items-center justify-between">
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">5º Sessão</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class=" text-md">
+                      <span class="">${valor}</span>
+                    </div>
+                  </div>
+                  <div class="">
+                    <div class="">
+                      <span class="">${data_sessao}</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">Gerar Relatório</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
