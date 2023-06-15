@@ -50,7 +50,7 @@
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 ">Especialidade</label>
                 <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5">
-                  <option>Selecione</option>
+                  <option>Selecione a Especialidade</option>
                   <option>Psicologia</option>
                 </select>
               </div>
@@ -64,7 +64,7 @@
               
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 ">Telefone</label>
-                <input type="number" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="(99) 99999-9999" required/>
+                <input type="text" id="numeroCelular" name="numeroCelular" oninput="formatarNumeroCelular()" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="(99) 99999-9999" required/>
               </div>
 
               <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -76,7 +76,10 @@
 
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 ">Cidade</label>
-                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="São Paulo" required/>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
+                  <option>Selecione a Cidade</option>
+                  <option>São Paulo</option>
+                </select>
               </div>
 
               <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -88,7 +91,10 @@
 
               <div>
                 <label class="block mb-2 text-sm font-medium text-gray-900 ">Pais</label>
-                <input type="text" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " placeholder="Brasil" required/>
+                <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
+                  <option>Selecione o País</option>
+                  <option>Brasil</option>
+                </select>
               </div>
 
               <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -150,17 +156,40 @@
                 </p>
               </div>
 
-              <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">
+              <a href="login.html" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">
                 Cadastrar
-              </button>
+              </a>
                       
               <p class="text-sm font-light text-gray-500 ">
-                Já tem conta? <a href="#" class="font-medium text-blue-600 hover:underline ">Logar</a>
+                Já tem conta? <a href="login.html" class="font-medium text-blue-600 hover:underline ">Logar</a>
               </p>
             </form>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+        function formatarNumeroCelular() {
+          var numeroCelular = document.getElementById("numeroCelular").value;
+
+          numeroCelular = numeroCelular.replace(/\D/g, '');
+
+          var numeroFormatado = '';
+          for (var i = 0; i < numeroCelular.length; i++) {
+            if (i === 0) {
+              numeroFormatado += '(';
+            } else if (i === 2) {
+              numeroFormatado += ') ';
+            } else if (i === 7 && numeroCelular.length === 11) {
+              numeroFormatado += '-';
+            }
+            numeroFormatado += numeroCelular[i];
+          }
+          
+          document.getElementById("numeroCelular").value = numeroFormatado;
+        }
+      
+    </script>
   </body>
 </html>

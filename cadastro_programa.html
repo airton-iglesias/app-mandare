@@ -8,7 +8,7 @@
   </head>
   <body class="bg-indigo-950">
     <section>
-      <div class="flex flex-col items-center mt-40 px-6 mx-auto">
+      <div class="flex flex-col items-center mt-5 sm:mt-40 px-6 mx-auto">
         <div class="w-full bg-white rounded-lg shadow sm:max-w-md p-12 ">
           <div class="space-y-4">    
             <a href="/" class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900">
@@ -26,7 +26,7 @@
             <form class="space-y-4">
                 <div>
                     <label class="block mb-2 text-sm font-medium text-gray-900 ">Nome do Programa</label>
-                    <input type="text" name="password" id="password" placeholder="Ex: Contato Visual" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
+                    <input type="text" placeholder="Ex: Contato Visual" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
                 </div>
 
                 <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -38,7 +38,14 @@
                 
                 <div>
                   <label class="block mb-2 text-sm font-medium text-gray-900 ">Sessões</label>
-                  <input type="number" name="password" id="password" placeholder="0" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
+                  <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
+                    <option>Selecione a Quantidade de Sessões</option>
+                    <option>1 Sessão</option>
+                    <option>2 Sessões</option>
+                    <option>3 Sessões</option>
+                    <option>4 Sessões</option>
+                    <option>5 Sessões</option>
+                  </select>
                 </div>
 
                 <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -50,7 +57,12 @@
 
                 <div>
                   <label class="block mb-2 text-sm font-medium text-gray-900 ">Tentativas</label>
-                  <input type="number" name="password" id="password" placeholder="0" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
+                  <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
+                    <option>Selecione a Quantidade de Tentativas</option>
+                    <option>1 Tentativa</option>
+                    <option>2 Tentativas</option>
+                    <option>3 Tentativas</option>
+                  </select>
                 </div>
 
                 <div class="hidden bg-red-400 p-3 rounded-lg text-center">
@@ -60,11 +72,31 @@
                   </p>
                 </div>
 
-                <button type="submit" class="w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">Cadastrar Programa</button>
+                <a href="painel_principal.html" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center h-12">Cadastrar Programa</a>
             </form>
           </div>
         </div>
       </div>
     </section>
+
+    <script>
+      function formatarNumero(id) {
+        var numeroSessao = document.getElementById(`${id}`).value;
+        numeroSessao = numeroSessao.replace(/\D/g, '');
+        
+        var numeroFormatado = '';
+
+        for (var i = 0; i < numeroSessao.length; i++) {
+          if (numeroSessao === "0" && i === 0) {
+            numeroFormatado = 1;
+          }
+          else{
+            numeroFormatado = numeroSessao;
+          }
+        }
+
+        document.getElementById(id).value = numeroFormatado;
+      }
+    </script>
   </body>
 </html>
