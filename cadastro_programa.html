@@ -9,12 +9,20 @@
   <body class="bg-indigo-950">
     <section>
       <div class="flex flex-col items-center mt-5 sm:mt-40 px-6 mx-auto">
+        <div class="flex w-full max-w-md">
+          <a href="painel_principal.html" class="flex hover:underline text-white mr-96 mb-3 cursor-pointer">
+            <svg  class="inline w-5 h-5 mb-1.5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+            </svg>
+            Voltar
+          </a>
+        </div>
         <div class="w-full bg-white rounded-lg shadow sm:max-w-md p-12 ">
           <div class="space-y-4">    
-            <a href="/" class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900">
+            <div class="flex items-center justify-center mb-6 text-lg sm:text-2xl font-semibold text-gray-900">
               <img class="w-10 h-10 mr-2 rounded-full" src="Logo_Somare.png" alt="logo"/>
               Cadastro de Programa
-            </a>
+            </div>
 
             <div class="hidden bg-red-400 p-3 rounded-lg text-center">
               <h1 class="text-xl">Error</h1>
@@ -25,20 +33,13 @@
 
             <form class="space-y-4">
                 <div>
-                    <label class="block mb-2 text-sm font-medium text-gray-900 ">Nome do Programa</label>
-                    <input type="text" placeholder="Ex: Contato Visual" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
-                </div>
-
-                <div class="hidden bg-red-400 p-3 rounded-lg text-center">
-                  <h1 class="text-xl">Error</h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  </p>
+                    <label for="NomePrograma" class="block mb-2 text-sm font-medium text-gray-900 ">Nome do Programa</label>
+                    <input type="text" name="NomePrograma" id="NomePrograma" placeholder="Ex: Contato Visual" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required/>
                 </div>
                 
                 <div>
-                  <label class="block mb-2 text-sm font-medium text-gray-900 ">Sessões</label>
-                  <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
+                  <label for="SelectSessao" class="block mb-2 text-sm font-medium text-gray-900 ">Sessões</label>
+                  <select id="SelectSessao" name="SelectSessao" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required>
                     <option>Selecione a Quantidade de Sessões</option>
                     <option>1 Sessão</option>
                     <option>2 Sessões</option>
@@ -48,16 +49,9 @@
                   </select>
                 </div>
 
-                <div class="hidden bg-red-400 p-3 rounded-lg text-center">
-                  <h1 class="text-xl">Error</h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  </p>
-                </div>
-
                 <div>
-                  <label class="block mb-2 text-sm font-medium text-gray-900 ">Tentativas</label>
-                  <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
+                  <label for="SelectTentativa" class="block mb-2 text-sm font-medium text-gray-900 ">Tentativas</label>
+                  <select name="SelectTentativa" id="SelectTentativa" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
                     <option>Selecione a Quantidade de Tentativas</option>
                     <option>1 Tentativa</option>
                     <option>2 Tentativas</option>
@@ -65,38 +59,11 @@
                   </select>
                 </div>
 
-                <div class="hidden bg-red-400 p-3 rounded-lg text-center">
-                  <h1 class="text-xl">Error</h1>
-                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                    It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                  </p>
-                </div>
-
-                <a href="painel_principal.html" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center h-12">Cadastrar Programa</a>
+                <button type="submit" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center h-12">Cadastrar Programa</button>
             </form>
           </div>
         </div>
       </div>
     </section>
-
-    <script>
-      function formatarNumero(id) {
-        var numeroSessao = document.getElementById(`${id}`).value;
-        numeroSessao = numeroSessao.replace(/\D/g, '');
-        
-        var numeroFormatado = '';
-
-        for (var i = 0; i < numeroSessao.length; i++) {
-          if (numeroSessao === "0" && i === 0) {
-            numeroFormatado = 1;
-          }
-          else{
-            numeroFormatado = numeroSessao;
-          }
-        }
-
-        document.getElementById(id).value = numeroFormatado;
-      }
-    </script>
   </body>
 </html>

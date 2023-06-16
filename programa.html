@@ -8,29 +8,38 @@
   </head>
   <body class="bg-indigo-950">
     <section>
-      <div class="flex flex-col items-center mt-5 sm:mt-40 px-6 mx-auto">
+      <div class="flex flex-col items-center mt-5 sm:mt-36 px-6 mx-auto">
+        <div class="flex w-full max-w-md">
+          <a href="dados_paciente.html" class="flex hover:underline text-white mr-96 mb-3 cursor-pointer">
+            <svg  class="inline w-5 h-5 mb-1.5 mr-1" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3" />
+            </svg>
+            Voltar
+          </a>
+        </div>
         <div class="w-full bg-white rounded-lg shadow md:mt-0 sm:max-w-md p-8 ">
           <div class="space-y-">    
-            <a href="/" class="flex items-center justify-center mb-6 text-2xl font-semibold text-gray-900">
+            <div class="flex items-center justify-center mb-6 text-lg sm:text-2xl font-semibold text-gray-900">
               <img class="w-10 h-10 mr-2 rounded-full" src="Logo_Somare.png" alt="logo"/>
               Programa
-            </a>
+            </div>
+
+            <div class="hidden bg-red-400 p-3 rounded-lg text-center">
+              <h1 class="text-xl">Error</h1>
+              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
+              </p>
+            </div>
+
+            <div class="w-full h-8 mt-3">
+              <span class="block mb-2 font-medium text-lg text-gray-900 text-center">Autismo</span>
+            </div>
+
             <form class="space-y-4">
 
-              <div class="hidden bg-red-400 p-3 rounded-lg text-center">
-                <h1 class="text-xl">Error</h1>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-                  It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
-                </p>
-              </div>
-
-              <div class="w-full h-8">
-                  <span class="block mb-2 font-medium text-lg text-gray-900 text-center">Autismo</span>
-              </div>
-
               <div>
-                <label class="block mb-2 text-sm font-medium text-gray-900 ">Sessão</label>
-                <select class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5">
+                <label for="SelectSessao" class="block mb-2 text-sm font-medium text-gray-900 ">Sessão</label>
+                <select id="SelectSessao" name="SelectSessao" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5">
                   <option>Selecionar Sessão</option>
                   <option>1º Sessão</option>
                   <option>2º Sessão</option>
@@ -41,33 +50,34 @@
               </div>
 
               <div class="block w-full h-[2px] border-t-0 bg-slate-200 opacity-100 dark:opacity-100"></div>
+
               <div>
                 <span>1º Tentativa</span>
                 <div class="flex items-center justify-between">
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Sim</label>
+                      <label for="1trySimcheckbox" class="text-gray-500 ">Sim</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="1trySimCheckbox" name="1trySimCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Não</label>
+                      <label for="1tryNaoCheckbox" class="text-gray-500 ">Não</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="1tryNaoCheckbox" name="1tryNaoCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Suporte</label>
+                      <label for="1trySuporteCheckbox" class="text-gray-500 ">Suporte</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="1trySuporteCheckbox" name="1trySuporteCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
                 </div>
@@ -78,28 +88,28 @@
                 <div class="flex items-center justify-between">
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Sim</label>
+                      <label for="2trySimCheckbox" class="text-gray-500 ">Sim</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input type="checkbox" id="2trySimCheckbox" name="2trySimCheckbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Não</label>
+                      <label for="2tryNaoCheckbox" class="text-gray-500 ">Não</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="2tryNaoCheckbox" name="2tryNaoCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Suporte</label>
+                      <label for="2trySuporteCheckbox" class="text-gray-500 ">Suporte</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="2trySuporteCheckbox" name="2trySuporteCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
@@ -112,28 +122,28 @@
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Sim</label>
+                      <label for="3trySimCheckbox" class="text-gray-500 ">Sim</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="3trySimCheckbox" name="3trySimCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Não</label>
+                      <label for="3tryNaoCheckbox" class="text-gray-500 ">Não</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="3tryNaoCheckbox" name="3tryNaoCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
                   <div class="">
                     <div class=" text-md">
-                      <label class="text-gray-500 ">Suporte</label>
+                      <label for="3trySuporteCheckbox" class="text-gray-500 ">Suporte</label>
                     </div>
                     <div class="flex items-center h-5">
-                      <input type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
+                      <input id="3trySuporteCheckbox" name="3trySuporteCheckbox" type="checkbox" class="w-7 h-7 mt-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-blue-300"/>
                     </div>
                   </div>
 
@@ -142,7 +152,7 @@
 
               <div class="block w-full h-[2px] border-t-0 bg-slate-200 opacity-100 dark:opacity-100"></div>
 
-              <a href="resultado_programa.html" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center h-12">Registrar</a>
+              <button href="resultado_programa.html" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center h-12">Registrar</button>
             </form>
           </div>
         </div>
