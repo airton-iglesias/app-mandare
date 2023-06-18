@@ -45,25 +45,13 @@
                 </div>
                 
                 <div>
-                  <label for="SelectSessao" class="block mb-2 text-sm font-medium text-gray-900 ">Sessões</label>
-                  <select id="SelectSessao" name="SelectSessao" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required>
-                    <option>Selecione a Quantidade de Sessões</option>
-                    <option>1 Sessão</option>
-                    <option>2 Sessões</option>
-                    <option>3 Sessões</option>
-                    <option>4 Sessões</option>
-                    <option>5 Sessões</option>
-                  </select>
+                  <label for="QtdSessao" class="block mb-2 text-sm font-medium text-gray-900 ">Sessões</label>
+                  <input type="number" min="1" oninput="formatarNumero('QtdSessao')" id="QtdSessao" name="QtdSessao" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required>
                 </div>
 
                 <div>
-                  <label for="SelectTentativa" class="block mb-2 text-sm font-medium text-gray-900 ">Tentativas</label>
-                  <select name="SelectTentativa" id="SelectTentativa" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" required>
-                    <option>Selecione a Quantidade de Tentativas</option>
-                    <option>1 Tentativa</option>
-                    <option>2 Tentativas</option>
-                    <option>3 Tentativas</option>
-                  </select>
+                  <label for="QtdTentativa" class="block mb-2 text-sm font-medium text-gray-900 ">Tentativas</label>
+                  <input type="number" min="1" oninput="formatarNumero('QtdTentativa')" id="QtdTentativa" name="QtdTentativa" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg block w-full p-2.5" required>
                 </div>
 
                 <button type="submit" class="block w-full text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3 text-center h-12">Cadastrar Programa</button>
@@ -72,5 +60,26 @@
         </div>
       </div>
     </section>
+
+    <script>
+      function formatarNumero(id){
+        var num = document.getElementById(`${id}`).value;
+
+        num = num.replace(/\D/g, '');
+
+        var numeroFormatado = '';
+        for (var i = 0; i < num.length; i++) {
+          if (i === 0 && num[i] === "0") {
+            numeroFormatado = '1';
+          }
+          else{
+            numeroFormatado = num;
+          }
+
+        }
+
+        document.getElementById(`${id}`).value = numeroFormatado;
+      }
+    </script>
   </body>
 </html>
