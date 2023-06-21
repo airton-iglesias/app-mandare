@@ -40,7 +40,7 @@
 
             <div class="w-full text-center">
               <img src="user-icon.png" id="IconFotoPaciente" class="bg-gray-200 mx-auto rounded-full w-24 h-24 p-0.5" alt="img_paciente"/>
-              <span id="FotoPacienteError" class="hidden mt-3 text-red-500 p-2">Tipo de arquivo não suportado. <br> Por favor, selecione um arquivo JPEG, PNG ou JPG.</span>
+              <span id="FotoPacienteError" class="block mt-1 text-red-500 p-2">Tipo de arquivo não suportado. <br> Por favor, selecione um arquivo JPEG, PNG ou JPG.</span>
             </div>
 
             <form class="space-y-4" enctype="multipart/form-data">
@@ -138,14 +138,14 @@
         var allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
 
         if (!allowedTypes.includes(file.type)) {
-          document.getElementById('FotoPacienteError').className = "mt-3 text-red-500 p-2";
+          document.getElementById('FotoPacienteError').className = "block mt-1 text-red-500 p-2";
           fileInput.value = '';
           document.getElementById('FotoPacienteError').innerHTML = "Tipo de arquivo não suportado. <br> Por favor, selecione um arquivo JPEG, PNG ou JPG.";
         }
         else{
           var image = document.getElementById('IconFotoPaciente');
           image.src = URL.createObjectURL(file);
-          document.getElementById('FotoPacienteError').className = "mt-3 text-green-500 p-2";
+          document.getElementById('FotoPacienteError').className = "block mt-1 text-green-500 p-2";
           document.getElementById('FotoPacienteError').innerHTML = "Enviado com sucesso!";
         }
       }
