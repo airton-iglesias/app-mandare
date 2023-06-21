@@ -46,7 +46,7 @@
             <form class="space-y-4" enctype="multipart/form-data">
 
               <div>
-                <label class="text-center text-white bg-blue-600 hover:bg-blue-700 block font-medium rounded-lg text-sm px-5 py-3 h-12">
+                <label class="text-center text-white bg-blue-600 hover:bg-blue-700 block font-medium rounded-lg text-sm px-5 py-3 h-12 cursor-pointer">
                   <span>Selecionar Foto</span>
                   <input type="file" accept="image/jpeg, image/png, image/jpg" id="FotoPaciente" name="FotoPaciente" oninput="changePhoto()" class="hidden"/>
                 </label>
@@ -142,6 +142,7 @@
           document.getElementById('FotoPacienteError').className = "block mt-1 text-red-500 p-2";
           fileInput.value = '';
           document.getElementById('FotoPacienteError').innerHTML = "Tipo de arquivo não suportado. <br> Por favor, selecione um arquivo JPEG, PNG ou JPG.";
+          document.getElementById('IconFotoPaciente').src = "user-icon.png";
         }
         else{
           var image = document.getElementById('IconFotoPaciente');
