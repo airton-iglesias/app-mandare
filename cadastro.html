@@ -6,7 +6,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <title>Somare - Cadastro </title>
   </head>
-  <body class="bg-indigo-950">
+  <body class="bg-indigo-950" onload="listarSelects()">
     <section class="">
       <div class="flex flex-col items-center mt-5 mb-5 px-6">
         <div class="w-full bg-white rounded-lg shadow sm:max-w-md p-2">
@@ -16,9 +16,9 @@
               Cadastro
             </div>
 
-            <div class="hidden bg-red-400 p-3 rounded-lg text-center">
+            <div id="errorPopUp" class="hidden bg-red-400 p-3 rounded-lg text-center">
               <h1 class="text-xl">Error</h1>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+              <p id="errorPopUpText">Lorem Ipsum is simply dummy text of the printing and typesetting industry.
                 It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.
               </p>
             </div>
@@ -48,18 +48,23 @@
               </div>
 
               <div>
-                <label for="SelectCidade" class="block mb-2 text-sm font-medium text-gray-900 ">Cidade</label>
-                <select id="SelectCidade" name="SelectCidade" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
-                  <option>Selecione a Cidade</option>
-                  <option>São Paulo</option>
+                <label for="SelectPais" class="block mb-2 text-sm font-medium text-gray-900 ">Pais</label>
+                <select id="SelectPais" name="SelectPais" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" disabled>
+                  
                 </select>
               </div>
 
               <div>
-                <label for="SelectPais" class="block mb-2 text-sm font-medium text-gray-900 ">Pais</label>
-                <select id="SelectPais" name="SelectPais" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
-                  <option>Selecione o País</option>
-                  <option>Brasil</option>
+                <label for="SelectEstado" class="block mb-2 text-sm font-medium text-gray-900 ">Estado</label>
+                <select id="SelectEstado" oninput="listarCidades()" name="SelectEstado" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
+                  <option selected value="null">Selecione o Estado</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="SelectCidade" class="block mb-2 text-sm font-medium text-gray-900 ">Cidade</label>
+                <select id="SelectCidade" name="SelectCidade" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5 " required>
+                  <option selected value="null">Selecione a Cidade</option>
                 </select>
               </div>
 
@@ -126,13 +131,13 @@
 
     <script>
       function formatarNumeroCelular(id) {
-        var numeroCelular = document.getElementById(`${id}`).value;
+        let numeroCelular = document.getElementById(`${id}`).value;
 
         numeroCelular = numeroCelular.replace(/\D/g, '');
 
-        var numeroFormatado = '';
+        let numeroFormatado = '';
 
-        for (var i = 0; i < numeroCelular.length; i++) {
+        for (let i = 0; i < numeroCelular.length; i++) {
           if (i === 0) {
             numeroFormatado += '(';
           } else if (i === 2) {
@@ -147,17 +152,17 @@
       }
 
       function formatarNome(id) {
-        var nome = document.getElementById(`${id}`).value;
+        let nome = document.getElementById(`${id}`).value;
 
         nome = nome.replace(/[^a-zA-ZÀ-ú\s]/g, '');
-        var nomeFormatado = nome.toUpperCase();
+        let nomeFormatado = nome.toUpperCase();
         
         document.getElementById(`${id}`).value = nomeFormatado;
       }
 
       function visibilidadeSenha(idSenha, idIcone) {
-        var senhaInput = document.getElementById(`${idSenha}`);
-        var icon = document.getElementById(`${idIcone}`);
+        let senhaInput = document.getElementById(`${idSenha}`);
+        let icon = document.getElementById(`${idIcone}`);
 
         if (senhaInput.type === "password") {
           senhaInput.type = "text";
@@ -169,18 +174,18 @@
       }
 
       function validarEmail(id) {
-        var nome = document.getElementById(`${id}`).value;
-        var lowercase = nome.toLowerCase();
+        let nome = document.getElementById(`${id}`).value;
+        let lowercase = nome.toLowerCase();
         document.getElementById(`${id}`).value = lowercase;
       }
 
       function formatarData(id) {
-        var valor = document.getElementById(`${id}`).value;
+        let valor = document.getElementById(`${id}`).value;
 
         valor = valor.replace(/\D/g, "");
 
-        var dataFormatada = '';
-        for (var i = 0; i < valor.length; i++) {
+        let dataFormatada = '';
+        for (let i = 0; i < valor.length; i++) {
           if (i === 2) {
             dataFormatada += '/';
           } else if (i === 4) {
@@ -192,6 +197,110 @@
         document.getElementById(`${id}`).value = dataFormatada;
       }
 
+      function listarSelects(){
+        let selectPaises = document.getElementById('SelectPais');
+        let selectEstados = document.getElementById('SelectEstado');
+
+        //tempo de execução da requisição da API - definido para 1 minuto
+
+        const timeoutPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(new Error('Tempo limite excedido'));
+          }, 60000); 
+        });
+
+        //Consumo da API para listar os paises
+
+        Promise.race([
+          fetch("https://servicodados.ibge.gov.br/api/v1/localidades/paises?orderBy=nome"),
+          timeoutPromise
+        ])
+        .then(response => {
+          if (!response.ok) {
+            document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+            document.getElementById('errorPopUpText').innerHTML = "A API de localização demorou muito para responder! <br> Código do status: " + response.status;
+          }
+          return response.json();
+        })
+        .then(listaPaises => {
+          listaPaises.map(pais => {
+            if(pais.nome === "Brasil"){
+              selectPaises.innerHTML += "<option selected value="+`${pais.nome}`+">" + `${pais.nome}` + "</option>"
+            }
+            else{
+              selectPaises.innerHTML += "<option value="+`${pais.nome}`+">" + `${pais.nome}` + "</option>"
+            }
+          })
+        })
+        .catch(error => {
+          document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+          document.getElementById('errorPopUpText').innerHTML = "Ocorreu um erro com a API de localização! <br> Erro:" + error;
+        });
+
+        //Consumo da API para listar os estados
+
+        Promise.race([
+          fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados?orderBy=nome"),
+          timeoutPromise
+        ])
+        .then(response => {
+          if (!response.ok) {
+            document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+            document.getElementById('errorPopUpText').innerHTML = "A API de localização demorou muito para responder! <br> Código do status: " + response.status;
+          }
+          return response.json();
+        })
+        .then(listaEstados => {
+          listaEstados.map(estado => {
+            selectEstados.innerHTML += "<option value="+`${estado.sigla}` + ">" + `${estado.nome}` + "</option>"
+              
+          })
+        })
+        .catch(error => {
+          document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+          document.getElementById('errorPopUpText').innerHTML = "Ocorreu um erro com a API de localização! <br> Erro:" + error;
+        });
+
+      }
+
+      function listarCidades(){
+        let SelectCidade = document.getElementById('SelectCidade');
+        let selectEstados = document.getElementById('SelectEstado');
+
+        SelectCidade.innerHTML =  "<option selected>Selecione a Cidade</option>"
+
+        //tempo de execução da requisição da API - definido para 1 minuto
+
+        const timeoutPromise = new Promise((resolve, reject) => {
+        setTimeout(() => {
+            reject(new Error('Tempo limite excedido'));
+          }, 60000); 
+        });
+
+        //Consumo da API para listar as cidades
+
+        Promise.race([
+          fetch("https://servicodados.ibge.gov.br/api/v1/localidades/estados/"+ `${selectEstados.value}`+"/municipios?orderBy=nome"),
+          timeoutPromise
+        ])
+        .then(response => {
+          if (!response.ok) {
+            document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+            document.getElementById('errorPopUpText').innerHTML = "A API de localização demorou muito para responder! <br> Código do status: " + response.status;
+          }
+          return response.json();
+        })
+        .then(listaCidades => {
+          listaCidades.map(cidade => {
+          SelectCidade.innerHTML += "<option value="+ `${cidade.nome}` +">" + `${cidade.nome}` + "</option>"
+            
+        })
+        })
+        .catch(error => {
+          document.getElementById('errorPopUp').className = "bg-red-400 p-3 rounded-lg text-center";
+          document.getElementById('errorPopUpText').innerHTML = "Ocorreu um erro com a API de localização! <br> Erro:" + error;
+        });
+      }
     </script>
   </body>
 </html>
