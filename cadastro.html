@@ -24,6 +24,7 @@
             </div>
 
             <div class="w-full text-center">
+              <span class="block mb-2 font-medium">Foto do Perfil</span>
               <img src="user-icon.png" id="IconFotoPaciente" class="bg-gray-200 mx-auto rounded-full w-24 h-24 p-0.5" alt="img_paciente"/>
               <span id="FotoPacienteError" class="hidden block mt-1 text-red-500 p-2">Tipo de arquivo não suportado. <br> Por favor, selecione um arquivo JPEG, PNG ou JPG.</span>
             </div>
@@ -62,7 +63,8 @@
 
               <div>
                 <label for="SelectPais" class="block mb-2 text-sm font-medium text-gray-900 ">Pais</label>
-                <select id="SelectPais" name="SelectPais" onchange="paisEstrangeiro()" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5">
+                <select id="SelectPais" name="SelectPais" class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5" disabled>
+                  <option value="Brasil" selected>Brasil</option>
                 </select>
               </div>
 
@@ -334,22 +336,6 @@
           document.getElementById('FotoPacienteError').innerHTML = "Enviado com sucesso!";
           document.getElementById('FotoPacienteError').className = "block mt-1 text-green-500 p-2";
           
-        }
-      }
-
-      function paisEstrangeiro(){
-        let estadoInput = document.getElementById('SelectEstadoInputDiv');
-        let cidadeInput = document.getElementById('SelectCidadeInputDiv');
-        let SelectedPais = document.getElementById('SelectPais').value;
-
-        if (SelectedPais !== "Brasil"){
-          estadoInput.innerHTML = "<input type='text' id='CidadeInput' name='CidadeInput' oninput='formatarNome(`CidadeInput`)' class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5' placeholder='Ex: North Caroline' required/>";
-          cidadeInput.innerHTML = "<input type='text' id='EstadoInput' name='EstadoInput' oninput='formatarNome(`EstadoInput`)' class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5' placeholder='Ex: Raleigh' required/>";
-        }
-        else{
-          estadoInput.innerHTML = "<select id='SelectEstado' oninput='listarCidades()' name='SelectEstado' class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5' required> <option selected value='null'>Selecione o Estado</option></select>";
-          cidadeInput.innerHTML = "<select id='SelectCidade' name='SelectCidade' class='bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-blue-600 focus:border-blue-600 block w-full p-2.5' required><option selected value='null'>Selecione a Cidade</option></select>";
-          listarSelects();
         }
       }
     </script>
